@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>   
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Verified Digital Credentials</title>
@@ -68,7 +68,7 @@
   font-weight: 300;
 }
 
-/* Top Right Transparent contact me - rgba(0,0,0,0.5)*/
+/* Top Right Transparent contact me */
 .top-contact-link {
   position: fixed;
   top: 20px;
@@ -81,18 +81,19 @@
   padding: 6px 12px;
   border-radius: 10px;
   backdrop-filter: blur(5px);
-  border: 1px solid gray;
+  border: 1px solid #4a4a4a;
   transition: .3s;
 }
 
 .top-contact-link:hover {
   transform: scale(1.08);
+  border: 1px solid teal;
   color: teal;
 }
 
 body {
     background: #000;
-    color: gray;
+    color:#4a4a4a;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -113,51 +114,60 @@ body {
 /* Ensure dashboard cards appear above particles */
 .card {
   position: relative;
-  z-index: 1; /* above particles */
-  background: rgba(255,255,255,0.08);
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.025); /* almost invisible glass */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-radius: 10px;
-  backdrop-filter: blur(10px);
-  transition: transform .4s ease, box-shadow .4s ease;
-  border: 1px solid teal;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s ease,
+              box-shadow 0.4s ease,
+              border 0.4s ease,
+              color 0.4s ease;
   color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
+/* ===== Card hover ===== */
 .card:hover {
-    transform: scale(1.05);
-    border: 1px solid #4a4a4a;
-    color:teal;
+  transform: scale(1.05);
+  border-color: teal;
+  color: teal;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
 }
 
+
+/* ===== Card image ===== */
 .card img {
-    width: 100%;
-    /*height: ; thoda bada look */
-    object-fit: contain; /* ❌cut nahi hoga */
-    border-radius: 12px 12px 0 0;
-    background-color: transparent;/* safe background for different shapes */
+  width: 100%;
+  object-fit: contain;
+  border-radius: 12px 12px 0 0;
+  background-color: transparent;
 }
 
-/* ===== Card ke andar button styling ===== */
+/* ===== Button base ===== */
 .card .btn-outline-info {
-  color: teal;                /* dull grey text */
-  border: 1px solid teal;      /* dull grey border */
-  background-color: transparent; /* glass look */
+  color: #4a4a4a;
+  border: 1px solid #4a4a4a;
+  background-color: transparent;
   font-weight: 400;
   border-radius: 8px;
   padding: 6px 14px;
-  transition: all 0.3s ease;
+  transition: border .3s ease, color .3s ease;
 }
 
-/* ===== Hover effect ===== */
+/* ✅ MAGIC LINE: Card hover ke saath button ka border teal */
+.card:hover .btn-outline-info {
+  border-color: teal;
+  color: teal;
+}
+
+/* (Optional) Agar button par hover kare to bhi same rahe */
 .card .btn-outline-info:hover {
-  color: #1a73e8;
-  background-color: inherit;       
-  border-color: #4a4a4a;
+  background-color: transparent;
 }
 
 footer {
@@ -173,7 +183,7 @@ footer {
   text-align: center;
   margin: 20px 0;
 
-  background: linear-gradient(90deg, gray);
+  background: linear-gradient(90deg, #4a4a4a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -183,7 +193,7 @@ footer {
 }
 
 .footer-link:hover {
-  -webkit-text-fill-color: #1a73e8;
+  -webkit-text-fill-color: teal;
   text-decoration: underline;
 }
 
@@ -322,7 +332,7 @@ footer {
 </p>
 
 <!-- copyright and rights section start -->
-<p style="font-weight: 300; font-size: 20px; background: linear-gradient(90deg, gray); 
+<p style="font-weight: 300; font-size: 20px; background: linear-gradient(90deg, #4a4a4a); 
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; display: inline-block;">
   <span style="font-size: 25px; font-weight: 300; vertical-align: middle;">©</span> 
   <script>document.write(new Date().getFullYear());</script> Rajeev's website | All rights reserved
@@ -554,6 +564,11 @@ const dashboardData = [
         link: "https://www.wscubetech.com/verify-certificate/D3T76WS2026M3615121285"
     },
 
+    {
+        title: "Learn Tableau for Data Science Roles",
+        img: "images/Scaler%20Tableau.png",
+        link: "https://moonshot.scaler.com/s/sl/z9ZaFhsUpn"
+    },
 ];
 
 const container = document.getElementById("projects");
